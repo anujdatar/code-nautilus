@@ -1,9 +1,12 @@
 # VSCode Nautilus Extension
 #
 # Place me in ~/.local/share/nautilus-python/extensions/,
-# ensure you have python-nautilus package, restrart Nautilus, and enjoy :)
+# ensure you have python-nautilus package, restart Nautilus, and enjoy :)
 #
 # This script was written by cra0zy and is released to the public domain
+#
+# change `app_exec`, `app_name` and className to adapt script
+# to a different application
 
 from gi import require_version
 require_version('Gtk', '3.0')
@@ -26,6 +29,7 @@ NEWWINDOW = False
 class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def launch_app(self, menu, files):
+        """ Handle app launch """
         safepaths = ''
         args = ''
 
@@ -44,6 +48,7 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
         call(app_exec + ' ' + args + safepaths + '&', shell=True)
 
     def get_file_items(self, window, files):
+        """ Handle a file/folder selection """
         item = Nautilus.MenuItem(
             name=menu_item_name + 'Open',
             label='Open in ' + app_name,
@@ -54,6 +59,7 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
         return [item]
 
     def get_background_items(self, window, file_):
+        """ Handle white space right-click """
         item = Nautilus.MenuItem(
             name=menu_item_name + 'OpenBackground',
             label='Open in ' + app_name,
