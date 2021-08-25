@@ -12,11 +12,12 @@ from gi.repository import Nautilus, GObject
 from subprocess import call
 import os
 
-# path to vscode
-VSCODE = 'code'
+# path to application binary or shortcut
+app_exec = 'code'
 
 # what name do you want to see in the context menu?
-VSCODENAME = 'Code'
+app_name = 'VS Code'
+menu_item_name = app_name.replace(" ", "")
 
 # always create new window?
 NEWWINDOW = False
@@ -24,7 +25,7 @@ NEWWINDOW = False
 
 class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
 
-    def launch_vscode(self, menu, files):
+    def launch_app(self, menu, files):
         safepaths = ''
         args = ''
 
@@ -33,31 +34,31 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
             safepaths += '"' + filepath + '" '
 
             # If one of the files we are trying to open is a folder
-            # create a new instance of vscode
+            # create a new instance of application
             if os.path.isdir(filepath) and os.path.exists(filepath):
                 args = '--new-window '
 
         if NEWWINDOW:
             args = '--new-window '
 
-        call(VSCODE + ' ' + args + safepaths + '&', shell=True)
+        call(app_exec + ' ' + args + safepaths + '&', shell=True)
 
     def get_file_items(self, window, files):
         item = Nautilus.MenuItem(
-            name='VSCodeOpen',
-            label='Open In ' + VSCODENAME,
-            tip='Opens the selected files with VSCode'
+            name=menu_item_name + 'Open',
+            label='Open in ' + app_name,
+            tip='Opens the selected files in ' + app_name
         )
-        item.connect('activate', self.launch_vscode, files)
+        item.connect('activate', self.launch_app, files)
 
         return [item]
 
     def get_background_items(self, window, file_):
         item = Nautilus.MenuItem(
-            name='VSCodeOpenBackground',
-            label='Open in ' + VSCODENAME,
-            tip='Opens VSCode in the current directory'
+            name=menu_item_name + 'OpenBackground',
+            label='Open in ' + app_name,
+            tip='Opens current directory in ' + app_name
         )
-        item.connect('activate', self.launch_vscode, [file_])
+        item.connect('activate', self.launch_app, [file_])
 
         return [item]
