@@ -2,8 +2,6 @@
 
 [ -z $1 ] && echo "No package selected. Exiting..." && exit 1
 
-# Install python-nautilus
-echo "Installing Python bindings for Nautilus..."
 # define package mananger options
 if type "pacman" > /dev/null 2>&1; then
     pkgmgr="pacman"
@@ -31,16 +29,20 @@ elif type "apt-get" > /dev/null 2>&1; then
     package_name="nautilus-python"
 else
     echo "Distribution package manager not supported yet"
+    echo "Please read instructions on installing extensions manually"
     exit 1
 fi
 
-# synchronizing package databases
-sudo $pkgmgr $update
-# check if package is installed
+echo  "Checking if Python bindings for Nautilus are installed"
 $pkgmgr $check_install $package_name &> /dev/null
+
 if [ `echo $?` -eq 1 ]; then
+    echo "Synchronozing package databases"
+    sudo $pkgmgr $update
+
+    echo "Installing $package_name ..."
     sudo $pkgmgr $install $package_name
-    [ `echo $?` -eq 1 ] 
+    [ `echo $?` -eq 1 ] && echo "Error Installing $package_name. Please install manually"
 else
     echo "Python bindings package already installed"
 fi
@@ -67,15 +69,12 @@ case $1 in
         ;;
 esac
 
-# Remove previous version and setup folder
 echo "Removing previous version (if found)..."
 rm -f ~/.local/share/nautilus-python/extensions/$extension-nautilus.py
 
-# Download and install the extension
 echo "Downloading newest version..."
 wget --show-progress -q -O ~/.local/share/nautilus-python/extensions/$extension-nautilus.py https://raw.githubusercontent.com/anujdatar/code-nautilus/master/$extension-nautilus.py
 
-# Restart nautilus
 echo "Restarting nautilus..."
 nautilus -q
 
