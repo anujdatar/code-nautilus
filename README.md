@@ -54,3 +54,31 @@ for Sublime Text
 ```sh
 rm -f ~/.local/share/nautilus-python/extensions/sublime-text-nautilus.py
 ```
+
+## HOW TO: Making your own script
+Pick any of the existing scripts and edit the following to use with your application
+```python
+# line 19, the application binary or executable's name that is used in terminal
+app_exec = 'code'
+
+# line 22, the name you would like to show up in the right click context menu
+app_name = 'VS Code'
+
+# line 29, the class name (VSCodeExtension), it can be anything.
+# as long as it does not clash with the class name of another extension.
+# do not change the parameters
+class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
+```
+
+An example for say **Sublime Merge**
+
+```python
+# line 19
+app_exec = 'smerge'
+
+# line 22
+app_name = 'Sublime Merge'
+
+# line 29
+class SublimeMergeExtension(GObject.GObject, Nautilus.MenuProvider):
+```
