@@ -10,10 +10,10 @@ from subprocess import call
 import os
 
 # path to vscode
-APP_EXEC = 'code'
+APP_EXEC = 'MY_CUSTOM_APP_EXEC'
 
 # what name do you want to see in the context menu?
-APP_NAME = 'VS Code'
+APP_NAME = 'MY_CUSTOM_APP_NAME'
 MENU_ITEM_NAME = APP_NAME.replace(" ", "")
 
 # always create new window?
