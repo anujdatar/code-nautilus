@@ -10,10 +10,11 @@ from subprocess import call
 import os
 
 # path to vscode
-VSCODE = 'code'
+APP_EXEC = 'code'
 
 # what name do you want to see in the context menu?
-VSCODENAME = 'Code'
+APP_NAME = 'VS Code'
+MENU_ITEM_NAME = APP_NAME.replace(" ", "")
 
 # always create new window?
 NEWWINDOW = False
@@ -37,14 +38,14 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
         if NEWWINDOW:
             args = '--new-window '
 
-        call(VSCODE + ' ' + args + safepaths + '&', shell=True)
+        call(APP_EXEC + ' ' + args + safepaths + '&', shell=True)
 
     def get_file_items(self, *args):
         files = args[-1]
         item = Nautilus.MenuItem(
-            name='VSCodeOpen',
-            label='Open in ' + VSCODENAME,
-            tip='Opens the selected files with VSCode'
+            name=f'{MENU_ITEM_NAME}Open',
+            label=f'Open in {APP_NAME}',
+            tip=f'Opens the selected files with {APP_NAME}'
         )
         item.connect('activate', self.launch_vscode, files)
 
@@ -53,9 +54,9 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
     def get_background_items(self, *args):
         file_ = args[-1]
         item = Nautilus.MenuItem(
-            name='VSCodeOpenBackground',
-            label='Open in ' + VSCODENAME,
-            tip='Opens the current directory in VSCode'
+            name=f'{MENU_ITEM_NAME}OpenBackground',
+            label=f'Open in {APP_NAME}',
+            tip=f'Opens the current directory in {APP_NAME}'
         )
         item.connect('activate', self.launch_vscode, [file_])
 
