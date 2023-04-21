@@ -43,15 +43,46 @@ else
     echo "Failed to find python-nautilus, please install it manually."
 fi
 
-# Remove previous version and setup folder
-echo "Removing previous version (if found)..."
+# user input for selecting the open-with application
+case $1 in
+    "code")
+        echo "Selected Open-With: VS Code"
+        APP_EXEC="code"
+        APP_NAME="VS Code"
+        ;;
+    "code-insiders")
+        echo "Selected Open-With: VS Code Insiders"
+        APP_EXEC="code-insiders"
+        APP_NAME="VS Code Insiders"
+        ;;
+    "sublime-text")
+        echo "Selected Open-With: Sublime Text"
+        APP_EXEC="subl"
+        APP_NAME="Sublime Text"
+        ;;
+    *)
+        echo "No application selected, defaulting to VS Code"
+        APP_EXEC="code"
+        APP_NAME="VS Code"
+        ;;
+esac
+
+# setup Nautilus extensions folder
 mkdir -p ~/.local/share/nautilus-python/extensions
+
+# Remove previous version of extension
+echo "Removing previous version (if found)..."
 rm -f ~/.local/share/nautilus-python/extensions/VSCodeExtension.py
 rm -f ~/.local/share/nautilus-python/extensions/code-nautilus.py
+rm -f ~/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py
+
+PLUGIN_FILENAME="~/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py"
 
 # Download and install the extension
-echo "Downloading newest version..."
-wget --show-progress -q -O ~/.local/share/nautilus-python/extensions/code-nautilus.py https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/code-nautilus.py
+echo "Downloading latest version..."
+wget --show-progress -q -O $PLUGIN_FILENAME https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/open-with-$APP_EXEC.py
+sed "s/MY_CUSTOM_APP_EXEC/$APP_EXEC/g" $PLUGIN_FILENAME -i
+sed "s/MY_CUSTOM_APP_NAME/$APP_NAME/g" $PLUGIN_FILENAME -i
 
 # Restart nautilus
 echo "Restarting nautilus..."
