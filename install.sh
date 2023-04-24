@@ -70,6 +70,7 @@ case $1 in
         CLASS_NAME="VSCodeExtension"
         ;;
 esac
+PLUGIN_FILENAME="$HOME/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py"
 
 # setup Nautilus extensions folder
 mkdir -p ~/.local/share/nautilus-python/extensions
@@ -78,7 +79,7 @@ mkdir -p ~/.local/share/nautilus-python/extensions
 echo "Removing previous version (if found)..."
 rm -f ~/.local/share/nautilus-python/extensions/VSCodeExtension.py
 rm -f ~/.local/share/nautilus-python/extensions/code-nautilus.py
-rm -f ~/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py
+rm -f $PLUGIN_FILENAME
 
 PLUGIN_FILENAME="~/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py"
 
