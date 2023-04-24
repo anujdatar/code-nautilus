@@ -1,4 +1,4 @@
-# VSCode Nautilus Extension
+# APP_TITLE Nautilus Extension
 #
 # Place me in ~/.local/share/nautilus-python/extensions/,
 # ensure you have python-nautilus package, restart Nautilus, and enjoy :)
@@ -9,7 +9,7 @@ from gi.repository import Nautilus, GObject
 from subprocess import call
 import os
 
-# path to vscode
+# path to application executable
 APP_EXEC = 'MY_CUSTOM_APP_EXEC'
 
 # what name do you want to see in the context menu?
@@ -20,7 +20,7 @@ MENU_ITEM_NAME = APP_NAME.replace(" ", "")
 NEWWINDOW = False
 
 
-class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
+class MY_EXTENSION_CLASS_NAME(GObject.GObject, Nautilus.MenuProvider):
 
     def launch_application(self, menu, files):
         safepaths = ''
