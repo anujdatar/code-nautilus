@@ -85,8 +85,10 @@ PLUGIN_FILENAME="~/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.p
 # Download and install the extension
 echo "Downloading latest version..."
 wget --show-progress -q -O $PLUGIN_FILENAME https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/open-with-nautilus.py
+sed "s/APP_TITLE/$APP_NAME/g" $PLUGIN_FILENAME -i
 sed "s/MY_CUSTOM_APP_EXEC/$APP_EXEC/g" $PLUGIN_FILENAME -i
 sed "s/MY_CUSTOM_APP_NAME/$APP_NAME/g" $PLUGIN_FILENAME -i
+sed "s/MY_EXTENSION_CLASS_NAME/$CLASS_NAME/g" $PLUGIN_FILENAME -i
 
 # Restart nautilus
 echo "Restarting nautilus..."
