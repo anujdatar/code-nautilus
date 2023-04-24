@@ -49,21 +49,25 @@ case $1 in
         echo "Selected Open-With: VS Code"
         APP_EXEC="code"
         APP_NAME="VS Code"
+        CLASS_NAME="VSCodeExtension"
         ;;
     "code-insiders")
         echo "Selected Open-With: VS Code Insiders"
         APP_EXEC="code-insiders"
         APP_NAME="VS Code Insiders"
+        CLASS_NAME="VSCodeInsidersExtension"
         ;;
     "sublime-text")
         echo "Selected Open-With: Sublime Text"
         APP_EXEC="subl"
         APP_NAME="Sublime Text"
+        CLASS_NAME="SublimeTextExtension"
         ;;
     *)
         echo "No application selected, defaulting to VS Code"
         APP_EXEC="code"
         APP_NAME="VS Code"
+        CLASS_NAME="VSCodeExtension"
         ;;
 esac
 
