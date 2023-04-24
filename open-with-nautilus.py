@@ -22,7 +22,7 @@ NEWWINDOW = False
 
 class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
 
-    def launch_vscode(self, menu, files):
+    def launch_application(self, menu, files):
         safepaths = ''
         args = ''
 
@@ -31,7 +31,7 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
             safepaths += '"' + filepath + '" '
 
             # If one of the files we are trying to open is a folder
-            # create a new instance of vscode
+            # create a new instance of application
             if os.path.isdir(filepath) and os.path.exists(filepath):
                 args = '--new-window '
 
@@ -47,7 +47,7 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
             label=f'Open in {APP_NAME}',
             tip=f'Opens the selected files with {APP_NAME}'
         )
-        item.connect('activate', self.launch_vscode, files)
+        item.connect('activate', self.launch_application, files)
 
         return [item]
 
@@ -58,6 +58,6 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
             label=f'Open in {APP_NAME}',
             tip=f'Opens the current directory in {APP_NAME}'
         )
-        item.connect('activate', self.launch_vscode, [file_])
+        item.connect('activate', self.launch_application, [file_])
 
         return [item]
