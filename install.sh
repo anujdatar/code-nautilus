@@ -81,7 +81,6 @@ rm -f ~/.local/share/nautilus-python/extensions/VSCodeExtension.py
 rm -f ~/.local/share/nautilus-python/extensions/code-nautilus.py
 rm -f $PLUGIN_FILENAME
 
-PLUGIN_FILENAME="~/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py"
 
 # Download and install the extension
 echo "Downloading latest version..."
