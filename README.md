@@ -13,22 +13,25 @@ to add different apps with minimal effort, making this branch incompatible with 
 repository. Check the `master` branch or original repository for original code.
 
 ## Install VSCode Extension
+
 ```bash
-wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash
 
 # or
 
-wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash -s "code"
+wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash -s "code"
 ```
 
 ## Install VSCode-Insiders Extension
+
 ```bash
-wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash -s "code-insiders"
+wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash -s "code-insiders"
 ```
 
 ## Install Sublime Text Extension
+
 ```bash
-wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash -s "sublime-text"
+wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash -s "sublime-text"
 ```
 
 ## Uninstall Extension
