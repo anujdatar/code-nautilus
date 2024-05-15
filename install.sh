@@ -6,7 +6,7 @@ if type "pacman" > /dev/null 2>&1
 then
     # check if already install, else install
     pacman -Qi python-nautilus &> /dev/null
-    if [ `echo $?` -eq 1 ]
+    if [ "$?" -eq 1 ]
     then
         sudo pacman -S --noconfirm python-nautilus
     else
@@ -32,7 +32,7 @@ then
     fi
 elif type "dnf" > /dev/null 2>&1
 then
-    installed=`dnf list --installed nautilus-python 2> /dev/null`
+    installed=$(dnf list --installed nautilus-python 2> /dev/null)
     if [ -z "$installed" ]
     then
         sudo dnf install -y nautilus-python
@@ -79,16 +79,16 @@ mkdir -p ~/.local/share/nautilus-python/extensions
 echo "Removing previous version (if found)..."
 rm -f ~/.local/share/nautilus-python/extensions/VSCodeExtension.py
 rm -f ~/.local/share/nautilus-python/extensions/code-nautilus.py
-rm -f $PLUGIN_FILENAME
+rm -f "$PLUGIN_FILENAME"
 
 
 # Download and install the extension
 echo "Downloading latest version..."
-wget --show-progress -q -O $PLUGIN_FILENAME https://raw.githubusercontent.com/anujdatar/code-nautilus/main/open-with-nautilus.py
-sed "s/APP_TITLE/$APP_NAME/g" $PLUGIN_FILENAME -i
-sed "s/MY_CUSTOM_APP_EXEC/$APP_EXEC/g" $PLUGIN_FILENAME -i
-sed "s/MY_CUSTOM_APP_NAME/$APP_NAME/g" $PLUGIN_FILENAME -i
-sed "s/MY_EXTENSION_CLASS_NAME/$CLASS_NAME/g" $PLUGIN_FILENAME -i
+wget --show-progress -q -O "$PLUGIN_FILENAME" https://raw.githubusercontent.com/anujdatar/code-nautilus/main/open-with-nautilus.py
+sed "s/APP_TITLE/$APP_NAME/g" "$PLUGIN_FILENAME" -i
+sed "s/MY_CUSTOM_APP_EXEC/$APP_EXEC/g" "$PLUGIN_FILENAME" -i
+sed "s/MY_CUSTOM_APP_NAME/$APP_NAME/g" "$PLUGIN_FILENAME" -i
+sed "s/MY_EXTENSION_CLASS_NAME/$CLASS_NAME/g" "$PLUGIN_FILENAME" -i
 
 # Restart nautilus
 echo "Restarting nautilus..."
