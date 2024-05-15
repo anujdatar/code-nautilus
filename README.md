@@ -34,15 +34,25 @@ wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install
 wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash -s "sublime-text"
 ```
 
+## Install Alacritty Extension
+
+For Alacritty, please see the example, don't use the auto installer, there are some extra
+customizations because of the application.
+
+- New window is always true
+- And extension should not show options if you right-click on a file, but should show if you right-click on folder
+
 ## Uninstall Extension
 
 ```
 rm -f ~/.local/share/nautilus-python/extensions/open-with-code.py
 rm -f ~/.local/share/nautilus-python/extensions/open-with-code-insiders.py
 rm -f ~/.local/share/nautilus-python/extensions/open-with-subl.py
+rm -f ~/.local/share/nautilus-python/extensions/open-with-alacritty.py
 ```
 
 ## Making your own extension for a different application
+
 ```python
 # line 1 (optional): update "APP_TITLE"
 # APP_TITLE Nautilus Extension
@@ -59,7 +69,9 @@ APP_NAME = 'MY_CUSTOM_APP_NAME'
 class MY_EXTENSION_CLASS_NAME(GObject.GObject, Nautilus.MenuProvider):
 
 ```
+
 An example for say **Sublime Merge**
+
 ```python
 # line 1
 # Sublime Merge Nautilus Extension
