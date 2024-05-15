@@ -15,6 +15,10 @@ repository. Check the `master` branch or original repository for original code.
 ## Install VSCode Extension
 
 ```bash
+wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash
+
+# or
+
 wget -qO- https://raw.githubusercontent.com/anujdatar/code-nautilus/main/install.sh | bash -s "code"
 ```
 
