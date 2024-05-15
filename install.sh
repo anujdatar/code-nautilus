@@ -70,7 +70,7 @@ case $1 in
         CLASS_NAME="VSCodeExtension"
         ;;
 esac
-PLUGIN_FILENAME="$HOME/.local/share/nautilus-python/extensions/open-with-$APP_EXEC.py"
+PLUGIN_FILENAME="$HOME/.local/share/nautilus-python/extensions/open_with_$APP_EXEC.py"
 
 # setup Nautilus extensions folder
 mkdir -p ~/.local/share/nautilus-python/extensions
