@@ -1,8 +1,16 @@
 # code-nautilus
 
-This repo provides a visual studio code extension for Nautilus.
+This repo provides an extension for Nautilus that lets you open files or folders in applications.
 
-Now also provides extensions for VSCode-Insiders and Sublime text. And, is extensible to other applications as well.
+Allows you to add Nautilus context menu options to open files and folders in
+VS Code, VS Code Insiders and Sublime text, and now folders in Alacritty.It is
+extensible to other applications as well. Examples for all four are included in the `examples`
+folder.
+
+It is fork of an extension of the same name by [harry-cpp](https://github.com/harry-cpp),
+[code-nautilus](https://github.com/harry-cpp/code-nautilus). I have made several changes
+to add different apps with minimal effort, making this branch incompatible with the original
+repository. Check the `master` branch or original repository for original code.
 
 ## Install VSCode Extension
 ```bash
