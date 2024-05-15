@@ -41,10 +41,10 @@ customizations because of the application.
 ## Uninstall Extension
 
 ```
-rm -f ~/.local/share/nautilus-python/extensions/open-with-code.py
-rm -f ~/.local/share/nautilus-python/extensions/open-with-code-insiders.py
-rm -f ~/.local/share/nautilus-python/extensions/open-with-subl.py
-rm -f ~/.local/share/nautilus-python/extensions/open-with-alacritty.py
+rm -f ~/.local/share/nautilus-python/extensions/open_with_code.py
+rm -f ~/.local/share/nautilus-python/extensions/open_with_code-insiders.py
+rm -f ~/.local/share/nautilus-python/extensions/open_with_subl.py
+rm -f ~/.local/share/nautilus-python/extensions/open_with_alacritty.py
 ```
 
 ## Making your own extension for a different application
