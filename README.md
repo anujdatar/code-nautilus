@@ -3,7 +3,7 @@
 This repo provides an extension for Nautilus that lets you open files or folders in applications.
 
 Allows you to add Nautilus context menu options to open files and folders in
-VS Code, VS Code Insiders and Sublime text, and now folders in Alacritty.It is
+VS Code, VS Code Insiders and Sublime text, and now folders in Alacritty. It is
 extensible to other applications as well. Examples for all four are included in the `examples`
 folder.
 
